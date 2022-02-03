@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { modifyWord } from '../functions/modifyWord';
 import { Genders, Cases } from '../interfaces/variableInterface';
-import useDebounce from '../custom-hooks/useDebounce';
+import useDebounce from '../hooks/useDebounce';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
@@ -13,7 +13,7 @@ function WordForm(): JSX.Element {
   const [output, setOutput] = useState<string>('');
 
   //контролируем частоту ререндера, дебаунсим значение, вводимое юзером (700ms)
-  const debouncedNoun = useDebounce(noun, 700);
+  const debouncedNoun = useDebounce(noun.toLowerCase(), 700);
 
   // присваиваем результат исполнения функции по модификации слова в переменную
   const finalWord = modifyWord(debouncedNoun, wordCase, gender);
