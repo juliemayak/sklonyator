@@ -26,7 +26,7 @@ function WordForm(): JSX.Element {
   return (
     <main className="h-[80%] w-full p-5 font-oswald text-stone-800 overflow-y-scroll ">
       <section className="flex flex-col justify-center items-center space-y-8">
-        <div className="flex flex-col space-y-5 justify-center items-center">
+        <div className="flex flex-col space-y-5 justify-center items-center text-center">
           <label htmlFor="word" className="text-2xl">
             Введите существительное в единственном числе
           </label>
@@ -76,7 +76,7 @@ function WordForm(): JSX.Element {
             onChange={(e) => setWordCase(e.target.value as keyof Cases)}
             name="падежи"
             id="падежи"
-            className="px-5 py-2 outline-none selected-option text-yellow-600 font-bold hover:cursor-pointer"
+            className="px-5 py-2 outline-none selected-option text-yellow-600 font-bold hover:cursor-pointer bg-white"
           >
             <option value="именительный">Именительный</option>
             <option value="родительный">Родительный</option>
@@ -87,11 +87,16 @@ function WordForm(): JSX.Element {
           </select>
         </div>
       </section>
-      <section className="relative border-2 border-yellow-600 mt-5 p-8 h-8 w-[50%] mx-auto space-y-2 flex justify-center items-center">
-        <p className="font-light text-2xl text-yellow-600 italic">{output}</p>
+      <section className="relative border-2 border-yellow-600 mt-5 p-8 h-8 max-w-[90%] sm:max-w-[60%] mx-auto flex justify-center items-center">
+        <p
+          className="w-full font-light text-2xl text-yellow-600 italic text-center overflow-x-scroll overflow-y-hidden
+        "
+        >
+          {output}
+        </p>
         <ContentCopyIcon
           onClick={() => navigator.clipboard.writeText(`${output}`)}
-          className="absolute right-3 top-3 text-stone-600 cursor-pointer active:scale-110 transition-all duration-500 ease-in-out"
+          className="absolute right-3 top-5 text-stone-600 cursor-pointer active:scale-110 transition-all duration-500 ease-in-out"
         />
       </section>
     </main>
